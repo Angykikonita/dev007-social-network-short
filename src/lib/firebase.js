@@ -1,12 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { getFirestore, collection,addDoc } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
 const firebaseConfig = {
   apiKey: "AIzaSyDTip05dHN7dqeUxJPFt2GyobZdfAKu8Yw",
   authDomain: "proyectoshort-55d0f.firebaseapp.com",
@@ -15,11 +17,14 @@ const firebaseConfig = {
   messagingSenderId: "739324984623",
   appId: "1:739324984623:web:e76f55fc4f35c56a2cb5da",
   measurementId: "G-EWG6PDJQDJ"
-
 };
 
-
 // Initialize Firebase
-
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export const saveTextarea= (textarea) => 
+  addDoc(collection(db, 'text'),{textarea});
+ 
+
