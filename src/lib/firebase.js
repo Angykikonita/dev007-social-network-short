@@ -9,7 +9,8 @@ import {
   orderBy,
   query,
   deleteDoc,
-  doc } from 'firebase/firestore';
+  doc,
+} from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -32,14 +33,9 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-export const saveTextarea = (textarea) =>
-  addDoc(collection(db, 'text'), { textarea, fecha: new Date() });
-export const deletePost = (Id) =>
-  deleteDoc(doc(db, 'text', Id));
+export const saveTextarea = (textarea) => addDoc(collection(db, 'text'), { textarea, fecha: new Date() });
+export const deletePost = (Id) => deleteDoc(doc(db, 'text', Id));
 
 const posteos = collection(db, 'text');
 
-export const ordenamiento = (callback) => 
-  onSnapshot(query(posteos, orderBy('fecha', 'desc')),callback);
-console.log(ordenamiento);
-
+export const ordenamiento = (callback) => onSnapshot(query(posteos, orderBy('fecha', 'desc')), callback);

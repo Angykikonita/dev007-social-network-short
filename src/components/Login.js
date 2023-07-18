@@ -25,8 +25,9 @@ export const Login = (onNavigate) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then(() => {
-        onNavigate('/home');      
-  })});
+        onNavigate('/home');
+      });
+  });
 
   HomeDiv.appendChild(imagen1);
   HomeDiv.appendChild(loader1);

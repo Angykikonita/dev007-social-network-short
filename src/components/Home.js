@@ -9,30 +9,42 @@ export const Home = (onNavigate) => {
   const textarea = document.createElement('textarea');
   const publish = document.createElement('button');
 
-  ordenamiento((querySnapshot) => {
-    const container = document.createElement('div');
-    container.innerHTML = ' ';
+  let snapshotListener = null; // Declare a variable to store the snapshot listener
+
+  function handleSnapshot(querySnapshot) {
+    HomeDiv2.innerHTML = ''; // Clear the container before rendering posts
+
     querySnapshot.forEach((doc) => {
+      const container = document.createElement('div');
       container.className = 'cont';
+
       const txtContainer = document.createElement('label');
       txtContainer.className = 'txtcont';
       txtContainer.textContent = doc.data().textarea;
+
       const btndelete = document.createElement('button');
       btndelete.className = 'btndelete';
       btndelete.textContent = 'borrar';
       btndelete.addEventListener('click', () => {
         deletePost(doc.id);
       });
-      container.append(txtContainer, btndelete);
-    });
-    HomeDiv2.appendChild(container);
-  });
 
-  HomeDiv1.addEventListener('submit', (e) => {
+      container.append(txtContainer, btndelete);
+      HomeDiv2.appendChild(container);
+    });
+  }
+
+  function handleSubmit(e) {
     e.preventDefault();
     saveTextarea(textarea.value);
     HomeDiv1.reset();
-  });
+  }
+
+  if (snapshotListener) {
+    snapshotListener();
+  }
+
+  snapshotListener = ordenamiento(handleSnapshot);
 
   buttonLogin.textContent = 'volver al login';
   buttonLogin.className = 'btnlogin';
@@ -41,7 +53,7 @@ export const Home = (onNavigate) => {
   caption.textContent = 'Recomienda las canciones mas dedicables aqui...';
   HomeDiv1.className = 'homeDiv1';
   textarea.className = 'textarea';
-  textarea.textContent = ' tu dedicatoria aqui';
+  textarea.placeholder = 'tu dedicatoria aquí';
   publish.className = 'btnPublish';
   publish.textContent = 'publicar';
   HomeDiv.appendChild(buttonLogin);
@@ -50,6 +62,8 @@ export const Home = (onNavigate) => {
   HomeDiv1.appendChild(textarea);
   HomeDiv1.appendChild(publish);
   HomeDiv.appendChild(HomeDiv2);
+
+  HomeDiv1.addEventListener('submit', handleSubmit);
 
   return HomeDiv;
 };

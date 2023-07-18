@@ -1,7 +1,10 @@
 // importamos la funcion que vamos a testear
-import { getFirestore, collection, addDoc, onSnapshot, orderBy, query, deleteDoc, doc} from "firebase/firestore";
-import { signInWithPopup, } from 'firebase/auth';
-import { saveTextarea, onSnapshot, ordenamiento,deletePost } from "../lib/firebase";
+import {
+  query,
+} from 'firebase/firestore';
+import { signInWithPopup } from 'firebase/auth';
+import { saveTextarea, ordenamiento } from '../src/lib/firebase';
+
 jest.mock('@firebase/firestore');
 
 describe('signInWithPopup', () => {
@@ -21,13 +24,11 @@ describe('saveTextarea', () => {
   });
 });
 
-
 describe('posteos', () => {
   it('deberia ser un objeto', () => {
     expect(typeof posteos).toBe('object');
   });
 });
-
 
 describe('ordenamiento', () => {
   it('deberia ser un objeto', () => {
