@@ -83,7 +83,7 @@ body{
 
 }
 .homeDiv1{
-    margin: 50px;
+    margin: 30px;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -98,9 +98,11 @@ body{
     display: flex;
     color:#FFF;
     background-color: #4F4C59;
+    border-style: groove;
+    border-width: 10px;
     border-color: brown;
     border-radius: 25px;
-    padding-top: 10px;
+    padding: 15px;
 
 
 }
@@ -133,4 +135,44 @@ body{
   border-radius:15px;
   border-style: groove;
 
+}
+
+.cont{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+    align-content: center;
+}
+
+.txtcont { 
+    display: flex;
+    color:#FFF;
+    background: #4F4C59;
+    width: 90%; 
+    height: 100px;
+    justify-content: center;
+    padding:10px;
+    border-width: 3px;
+    border-color: #5e0c05;
+    border-style: groove;
+    border-radius: 25px;
+   
+    
+} 
+
+.btndelete {
+    margin: 10px;
+    margin-left: 80%;
+    color:#FFF;
+    background-color:#F23827 ;
+    padding-top: 5px;
+    padding-bottom:5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+    border-style: groove;
+
+  
 }

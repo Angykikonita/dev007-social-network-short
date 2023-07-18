@@ -6,7 +6,7 @@ const rootDiv = document.getElementById('root');
 const routes = {
   '/': Login,
   '/home': Home,
-}; 
+};
 export const onNavigate = (pathname) => {
   window.history.pushState(
     {},

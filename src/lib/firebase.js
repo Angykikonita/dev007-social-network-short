@@ -1,8 +1,15 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
-import { getFirestore, collection,addDoc } from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+  orderBy,
+  query,
+  deleteDoc,
+  doc } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -10,21 +17,29 @@ import { getFirestore, collection,addDoc } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDTip05dHN7dqeUxJPFt2GyobZdfAKu8Yw",
-  authDomain: "proyectoshort-55d0f.firebaseapp.com",
-  projectId: "proyectoshort-55d0f",
-  storageBucket: "proyectoshort-55d0f.appspot.com",
-  messagingSenderId: "739324984623",
-  appId: "1:739324984623:web:e76f55fc4f35c56a2cb5da",
-  measurementId: "G-EWG6PDJQDJ"
+
+  apiKey: 'AIzaSyCXH0UJ31GniRmyQVnY7jVSbpcs9B5L8g4',
+  authDomain: 'proyectocorto-8146e.firebaseapp.com',
+  projectId: 'proyectocorto-8146e',
+  storageBucket: 'proyectocorto-8146e.appspot.com',
+  messagingSenderId: '510365200419',
+  appId: '1:510365200419:web:55c92171fc148f0f8d8196',
+
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
-export const saveTextarea= (textarea) => 
-  addDoc(collection(db, 'text'),{textarea});
- 
+
+export const saveTextarea = (textarea) =>
+  addDoc(collection(db, 'text'), { textarea, fecha: new Date() });
+export const deletePost = (Id) =>
+  deleteDoc(doc(db, 'text', Id));
+
+const posteos = collection(db, 'text');
+
+export const ordenamiento = (callback) => 
+  onSnapshot(query(posteos, orderBy('fecha', 'desc')),callback);
+console.log(ordenamiento);
 
