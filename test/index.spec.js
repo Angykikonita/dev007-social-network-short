@@ -1,15 +1,21 @@
 // importamos la funcion que vamos a testear
-import {
+/* import {
   query,
-} from 'firebase/firestore';
+} from 'firebase/firestore'; */
 import { signInWithPopup } from 'firebase/auth';
-import { saveTextarea, ordenamiento } from '../src/lib/firebase';
+import { saveTextarea, ordenamiento, deletePost } from '../src/lib/firebase';
 
 jest.mock('@firebase/firestore');
+jest.mock('firebase/auth');
 
 describe('signInWithPopup', () => {
   it('debería ser una función', () => {
     expect(typeof signInWithPopup).toBe('function');
+  });
+
+  it('llamar a la funcion', async () => {
+    await signInWithPopup();
+    expect(signInWithPopup).toHaveBeenCalled();
   });
 });
 
@@ -18,20 +24,21 @@ describe('saveTextarea', () => {
     expect(typeof saveTextarea).toBe('function');
   });
 
-  test('deberia mostrar post', async () => {
+  /* test('deberia mostrar post', async () => {
     await saveTextarea();
     expect(query).toHaveBeenCalled();
   });
-});
-
-describe('posteos', () => {
-  it('deberia ser un objeto', () => {
-    expect(typeof posteos).toBe('object');
-  });
+  */
 });
 
 describe('ordenamiento', () => {
-  it('deberia ser un objeto', () => {
-    expect(typeof ordenamiento).toBe('object');
+  it('deberia ser una funcion', () => {
+    expect(typeof ordenamiento).toBe('function');
+  });
+});
+
+describe('deletePost', () => {
+  test('deberia ser una funcion', () => {
+    expect(typeof deletePost).toBe('function');
   });
 });

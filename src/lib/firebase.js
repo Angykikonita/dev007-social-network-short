@@ -35,7 +35,6 @@ export const db = getFirestore(app);
 
 export const saveTextarea = (textarea) => addDoc(collection(db, 'text'), { textarea, fecha: new Date() });
 export const deletePost = (Id) => deleteDoc(doc(db, 'text', Id));
-
 const posteos = collection(db, 'text');
 
 export const ordenamiento = (callback) => onSnapshot(query(posteos, orderBy('fecha', 'desc')), callback);
