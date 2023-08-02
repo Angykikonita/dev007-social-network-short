@@ -5,8 +5,8 @@
 import { signInWithPopup } from 'firebase/auth';
 import { saveTextarea, ordenamiento, deletePost } from '../src/lib/firebase';
 
-jest.mock('@firebase/firestore');
 jest.mock('firebase/auth');
+jest.mock('@firebase/firestore');
 
 describe('signInWithPopup', () => {
   it('debería ser una función', () => {

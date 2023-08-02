@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
+//import { isUidIdentifier } from 'firebase-admin/lib/auth/identifier';
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, updateCurrentUser } from 'firebase/auth';
 import {
   getFirestore,
   collection,
@@ -9,7 +10,7 @@ import {
   orderBy,
   query,
   deleteDoc,
-  doc,
+  doc
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -32,9 +33,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+console.log(auth);
 
-export const saveTextarea = (textarea) => addDoc(collection(db, 'text'), { textarea, fecha: new Date() });
+export const saveTextarea = (textarea, idUsuario, email) => addDoc(collection(db, 'text'), { textarea, fecha: new Date(), idUsuario, email });
+
 export const deletePost = (Id) => deleteDoc(doc(db, 'text', Id));
 const posteos = collection(db, 'text');
 
+//export const email = (Id) => 
+//const emailUser = collection(db, 'userName');
+
 export const ordenamiento = (callback) => onSnapshot(query(posteos, orderBy('fecha', 'desc')), callback);
+console.log(ordenamiento);

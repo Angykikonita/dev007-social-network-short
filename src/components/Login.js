@@ -7,7 +7,7 @@ export const Login = (onNavigate) => {
   HomeDiv.textContent = 'Bienvenidx...';
 
   const imagen1 = document.createElement('img');
-  imagen1.src = '/components/imagenes/ddddd.PNG';
+  imagen1.src = '/imagenes/ddddd.png';
   imagen1.className = 'img1';
 
   const loader1 = document.createElement('span');

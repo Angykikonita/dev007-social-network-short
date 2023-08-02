@@ -77,7 +77,7 @@ body{
     padding-bottom: 50px;
     display: flex;
     width: 100%;
-    background: url('/src/components/imagenes/ddddd.PNG');
+    background: url('/src/imagenes/ddddd.png');
 
 }
 .homeDiv1{
@@ -156,9 +156,15 @@ body{
     border-color: #5e0c05;
     border-style: groove;
     border-radius: 25px;
-   
-    
+     
 } 
+
+.emailAutor {
+    display: flex;
+    color:#f88077;
+    margin-left: 50%;
+    
+}
 
 .btndelete {
     margin: 10px;
@@ -172,5 +178,5 @@ body{
     border-radius: 10px;
     border-style: groove;
 
-  
 }
+
