@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 //import { isUidIdentifier } from 'firebase-admin/lib/auth/identifier';
 import { initializeApp } from 'firebase/app';
-import { getAuth, updateCurrentUser } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import {
   getFirestore,
   collection,
@@ -35,7 +35,7 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 console.log(auth);
 
-export const saveTextarea = (textarea, idUsuario, email) => addDoc(collection(db, 'text'), { textarea, fecha: new Date(), idUsuario, email });
+export const saveTextarea = (textarea) => addDoc(collection(db, 'text'), { textarea, fecha: new Date()});
 
 export const deletePost = (Id) => deleteDoc(doc(db, 'text', Id));
 const posteos = collection(db, 'text');

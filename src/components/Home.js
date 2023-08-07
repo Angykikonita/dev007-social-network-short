@@ -23,10 +23,6 @@ export const Home = (onNavigate) => {
       const txtContainer = document.createElement('label');
       txtContainer.className = 'txtcont';
       txtContainer.textContent = doc.data().textarea;
-      //donde se debera mostrar el usuario que es autor del post, por lo tanto aqui
-      const emailUsuario = document.createElement('label');
-      emailUsuario.className = 'emailAutor';
-      emailUsuario.textContent = "idUsuario";
 
       const btndelete = document.createElement('button');
       btndelete.value = doc.id;
@@ -38,14 +34,14 @@ export const Home = (onNavigate) => {
         deletePost(doc.id);
       });
       
-      container.append(txtContainer, idUsuario, btndelete);
+      container.append(txtContainer, btndelete);
       HomeDiv2.appendChild(container);
 
-      const email = currentUserInfo().email;
+      //const email = currentUserInfo().email;
       function handleSubmit(e) {
         console.log('HOlaaa')
         e.preventDefault();
-        saveTextarea(textarea.value, idUsuario, email);
+        saveTextarea(textarea.value);
         HomeDiv1.reset();
       }
       if (snapshotListener) {
@@ -75,7 +71,7 @@ export const Home = (onNavigate) => {
 
   HomeDiv.children[2].lastElementChild.addEventListener('click', (e) => {
     e.preventDefault()
-    saveTextarea(textarea.value, idUsuario, email);
+    saveTextarea(textarea.value);
         HomeDiv1.reset();
   })
 
