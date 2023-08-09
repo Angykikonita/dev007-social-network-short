@@ -29,7 +29,7 @@ tambien puede publicar su post y eliminarlo si lo desea.
 
 El prototipo es una parte muy importante de un proyecto ya que con el puedes plasmar tu idea principal e irte guiando para lograr tu objetivo, en mi caso siempre trato de apegarme lo mas posible a el. en cuanto a funcionalidades y el lado visual.
 
-![p](src/components/imagenes/prototipos.png)
+![p](src/imagenes/prototipos.png)
 
 
 ## 4. agradecimiento

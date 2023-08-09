@@ -1,4 +1,4 @@
-import { saveTextarea, ordenamiento, deletePost, auth } from '../lib/firebase';
+import { saveTextarea, ordenamiento, deletePost, onSnapshot, auth } from '../lib/firebase';
 
 //Estas variables crean todos los elementos de la interfaz//
 export const Home = (onNavigate) => {
@@ -25,7 +25,6 @@ export const Home = (onNavigate) => {
       txtContainer.textContent = doc.data().textarea;
 
       const btndelete = document.createElement('button');
-      btndelete.value = doc.id;
       btndelete.id = doc.id;
       btndelete.className = 'btndelete';
       btndelete.textContent = 'borrar';
@@ -39,7 +38,6 @@ export const Home = (onNavigate) => {
 
       //const email = currentUserInfo().email;
       function handleSubmit(e) {
-        console.log('HOlaaa')
         e.preventDefault();
         saveTextarea(textarea.value);
         HomeDiv1.reset();
@@ -72,8 +70,8 @@ export const Home = (onNavigate) => {
   HomeDiv.children[2].lastElementChild.addEventListener('click', (e) => {
     e.preventDefault()
     saveTextarea(textarea.value);
-        HomeDiv1.reset();
-  })
+       HomeDiv1.reset();
+ })
 
   return HomeDiv;
 };
