@@ -1,4 +1,4 @@
-import { saveTextarea, ordenamiento, deletePost, onSnapshot, auth } from '../lib/firebase';
+import { saveTextarea, ordenamiento, deletePost } from '../lib/firebase';
 
 //Estas variables crean todos los elementos de la interfaz//
 export const Home = (onNavigate) => {
@@ -25,7 +25,6 @@ export const Home = (onNavigate) => {
       txtContainer.textContent = doc.data().textarea;
 
       const btndelete = document.createElement('button');
-      btndelete.id = doc.id;
       btndelete.className = 'btndelete';
       btndelete.textContent = 'borrar';
       //Abajo boton para borrar post, pasando el id del documento como argumento
@@ -35,19 +34,18 @@ export const Home = (onNavigate) => {
       
       container.append(txtContainer, btndelete);
       HomeDiv2.appendChild(container);
-
-      //const email = currentUserInfo().email;
-      function handleSubmit(e) {
-        e.preventDefault();
-        saveTextarea(textarea.value);
-        HomeDiv1.reset();
-      }
-      if (snapshotListener) {
-        snapshotListener();
-      }
     });
   }
-
+      //const email = currentUserInfo().email;
+  function handleSubmit(e) {
+    e.preventDefault();
+    saveTextarea(textarea.value);
+    HomeDiv1.reset();
+  }
+  if (snapshotListener) {
+    snapshotListener();   
+  }
+    
   snapshotListener = ordenamiento(handleSnapshot);
 
   volverLogin.textContent = 'volver al login';
@@ -67,11 +65,11 @@ export const Home = (onNavigate) => {
   HomeDiv1.appendChild(publish);
   HomeDiv.appendChild(HomeDiv2);
 
-  HomeDiv.children[2].lastElementChild.addEventListener('click', (e) => {
-    e.preventDefault()
-    saveTextarea(textarea.value);
-       HomeDiv1.reset();
- })
-
+  //HomeDiv.children[2].lastElementChild.addEventListener('click', (e) => {
+   // e.preventDefault()
+   // saveTextarea(textarea.value);
+   //    HomeDiv1.reset();
+ 
+   HomeDiv1.addEventListener('submit', handleSubmit);
   return HomeDiv;
 };

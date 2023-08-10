@@ -33,14 +33,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
-console.log(auth);
 
 //agrega post a firebase
 export const saveTextarea = (textarea) => addDoc(collection(db, 'text'), { textarea, fecha: new Date()});
 // borra post
+export const deletePost = (Id) => deleteDoc(doc(db, 'text', Id));
 const posteos = collection(db, 'text');
 console.log(posteos)
-export const deletePost = (Id) => deleteDoc(doc(db, 'text', Id));
+//export const deletePost = (Id) => deleteDoc(doc(db, 'text', Id));
 
 
 //export const email = (Id) => 
